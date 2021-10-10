@@ -1,0 +1,22 @@
+.app_layout {
+    display: grid;
+    grid-template-areas: "navbar"
+                         "body";
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    height: 100vh;
+    width: 100vw;
+}
+
+.bodyContainer {
+    grid-area: body;
+    display: flex;
+    justify-content: center;
+}
+
+.navbarContainer {
+    grid-area: navbar;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

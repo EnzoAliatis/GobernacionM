@@ -1,0 +1,46 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    padding: 0 26px;
+    max-width: 1080px;
+    a {
+        text-decoration: none;
+        color: $gray_text;
+    }
+}
+
+.navbar__container {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.navbar__link_list {
+    display: flex;
+    list-style-type: none;
+    justify-content: space-around;
+    flex-grow: 1;
+    align-items: center;
+    margin-top: 16px;
+
+    li {
+        margin: 0 24px;
+    }
+}
+
+.navbar__img_container {
+    height: 80px;
+    img {
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.navbar__loginContainer {
+    margin-top: 16px;
+
+    a {
+        color: $primary;
+    }
+}
