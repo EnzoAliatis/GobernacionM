@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 import logo from '../assets/logo.png';
 
@@ -13,21 +13,46 @@ export const Navbar = () => {
                 </div>
                 <ul className="navbar__link_list">
                     <li>
-                        <Link to="/">FICHA TECNICA</Link>
+                        <NavLink
+                            to="/fichaTecnica"
+                            activeClassName="selected"
+                        >
+                            FICHA TECNICA
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/">CONECTIVIDAD</Link>
+                        <NavLink
+                            to="/conectividad"
+                            activeClassName="selected"
+                        >
+                            CONECTIVIDAD
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/">CIURCUITO CERRADO</Link>
+                        <NavLink
+                            to="/circuitoCerrado"
+                            activeClassName="selected"
+                        >
+                            CIURCUITO CERRADO
+                        </NavLink>
                     </li>
                     <li>
-                        <Link to="/">USUARIOS</Link>
+                        <NavLink
+                            to="/usuarios"
+                            activeClassName="selected"
+                        >
+                            USUARIOS
+                        </NavLink>
                     </li>
                 </ul>
 
                 <div className='navbar__loginContainer'>
-                    <Link to="/">LOGIN</Link>
+                    <NavLink
+                        to="/auth/login"
+                        activeClassName="selected"
+                    >
+                        LOGIN
+                    </NavLink>
                 </div>
             </div>
         </nav>
