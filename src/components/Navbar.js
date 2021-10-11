@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 
 import logo from '../assets/logo.png';
 
@@ -8,9 +8,11 @@ export const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="navbar__container">
-                <div className="navbar__img_container">
-                    <img src={logo} alt="gobernacion de manabi" />
-                </div>
+                <Link to="/">
+                    <div className="navbar__img_container">
+                        <img src={logo} alt="gobernacion de manabi" />
+                    </div>
+                </Link>
                 <ul className="navbar__link_list">
                     <li>
                         <NavLink
