@@ -39,8 +39,14 @@
 
 .navbar__loginContainer {
     margin-top: 16px;
+    text-transform: uppercase;
 
     a {
         color: $primary;
+    }
+
+    p {
+        color: $primary;
+        cursor: pointer;
     }
 }

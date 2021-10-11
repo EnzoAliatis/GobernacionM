@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
     BrowserRouter as Router,
     Switch,
@@ -14,9 +14,21 @@ import { UsuariosScreen } from '../screens/UsuariosScreen';
 import { AuthRouter } from './AuthRouter'
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectAuth } from '../store/slices/authSlice';
+import { startupThunk } from '../store/thunks/startupThunk';
+
 
 export const AppRouter = () => {
-    const isLoggedIn = true;
+    const dispatch = useDispatch();
+    const { isAuthenticated, isChecking } = useSelector(selectAuth);
+
+
+    useEffect(() => {
+        if (isChecking) {
+            dispatch(startupThunk());
+        }
+    }, [dispatch, isChecking]);
 
     return (
         <Router>
@@ -25,23 +37,29 @@ export const AppRouter = () => {
                     <Navbar />
                 </div>
                 <div className="bodyContainer">
-                    <Switch>
-                        <PublicRoute isAuthenticated={isLoggedIn} path='/auth' component={AuthRouter} />
+                    {
+                        isChecking ? (
+                            <h1>Cargando...</h1>
+                        ) : (
+                            <Switch>
+                                <PublicRoute isAuthenticated={isAuthenticated} path='/auth' component={AuthRouter} />
 
-                        <PrivateRoute isAuthenticated={isLoggedIn} exact path='/fichaTecnica' component={FichaTecnicaScreen} />
-                        <PrivateRoute isAuthenticated={isLoggedIn} exact path='/conectividad' component={ConectividadScreen} />
-                        <PrivateRoute isAuthenticated={isLoggedIn} exact path='/circuitoCerrado' component={CircuitoScreen} />
-                        <PrivateRoute isAuthenticated={isLoggedIn} exact path='/usuarios' component={UsuariosScreen} />
+                                <PrivateRoute isAuthenticated={isAuthenticated} exact path='/fichaTecnica' component={FichaTecnicaScreen} />
+                                <PrivateRoute isAuthenticated={isAuthenticated} exact path='/conectividad' component={ConectividadScreen} />
+                                <PrivateRoute isAuthenticated={isAuthenticated} exact path='/circuitoCerrado' component={CircuitoScreen} />
+                                <PrivateRoute isAuthenticated={isAuthenticated} exact path='/usuarios' component={UsuariosScreen} />
 
 
-                        <Route
-                            exact
-                            path="/"
-                            component={HomeScreen}
-                        />
+                                <Route
+                                    exact
+                                    path="/"
+                                    component={HomeScreen}
+                                />
 
-                        <Redirect to="/" />
-                    </Switch>
+                                <Redirect to="/" />
+                            </Switch>
+                        )
+                    }
                 </div>
             </div>
         </Router>

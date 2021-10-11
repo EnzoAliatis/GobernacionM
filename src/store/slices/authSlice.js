@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-
-// import { startupThunk } from '../thunks/startupThunk';
+import { startupThunk } from '../thunks/startupThunk';
 
 const authSlice = createSlice({
     name: 'auth',
@@ -24,21 +23,21 @@ const authSlice = createSlice({
             state.isAuthenticated = false;
         },
     },
-    // extraReducers: (builder) => {
-    //     builder.addCase(startupThunk.fulfilled, (state, { payload }) => ({
-    //         ...state,
-    //         ...payload.auth,
-    //     }));
-    //     builder.addCase(startupThunk.rejected, (state, { payload }) => ({
-    //         ...state,
-    //         token: null,
-    //         isChecking: false,
-    //         isAuthenticated: false,
-    //     }));
-    // },
+    extraReducers: (builder) => {
+        builder.addCase(startupThunk.fulfilled, (state, { payload }) => ({
+            ...state,
+            ...payload.auth,
+        }));
+        builder.addCase(startupThunk.rejected, (state, { payload }) => ({
+            ...state,
+            token: null,
+            isChecking: false,
+            isAuthenticated: false,
+        }));
+    },
 });
 
 export const { setCredentials, setIsChecking, removeCredentials } = authSlice.actions;
 export default authSlice.reducer;
 
-export const selectCurrentToken = (state) => state.auth;
+export const selectAuth = (state) => state.auth;
