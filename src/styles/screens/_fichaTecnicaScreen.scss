@@ -1,0 +1,75 @@
+.fichaTecnica {
+    margin-top: 60px;
+}
+
+.fichaTecnica__formBox {
+    background-color: darken($color: #f6f5f7, $amount: 8%);
+    border-radius: 25px;
+}
+
+.fichaTecnica__formContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+    padding: 120px;
+}
+
+.fichaTecnica__inputContainer {
+    display: flex;
+    justify-content: space-between;
+
+    label {
+        margin-right: 16px;
+        width: 190px;
+    }
+}
+
+.fichaTecnica__form_col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fichaTecnica__formTitle {
+    padding: 25px 0 0 25px;
+}
+
+.fichaTecnica__btnContainer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 25px;
+}
+
+.fichaTecnica__TableHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+
+    :first-child {
+        text-align: left;
+    }
+
+    h4 {
+        width: 180px;
+        text-align: center;
+    }
+}
+
+.fichaTecnica__inputTableContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 25px;
+
+    margin: 16px 0;
+
+
+    label {
+        margin-right: 16px;
+        width: 190px;
+    }
+}
+
+
+.fichaTecnica__formDetallesBox {
+    padding: 26px 0;
+}

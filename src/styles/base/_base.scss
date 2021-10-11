@@ -11,3 +11,16 @@ html, body {
 .selected {
     color: $primary !important;
 }
+
+input {
+    border: none;
+    border-radius: 5px;
+    width: 190px;
+}
+
+.primaryBtn {
+    background-color: $primary;
+    color: white;
+    padding: 4px 16px;
+    font-weight: 600;
+}
