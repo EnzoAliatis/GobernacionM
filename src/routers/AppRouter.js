@@ -16,7 +16,7 @@ import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
 
 export const AppRouter = () => {
-    const isLoggedIn = false;
+    const isLoggedIn = true;
 
     return (
         <Router>
