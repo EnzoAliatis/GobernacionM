@@ -1,11 +1,3 @@
-.fichaTecnica {
-    margin-top: 60px;
-}
-
-.fichaTecnica__formBox {
-    background-color: darken($color: #f6f5f7, $amount: 8%);
-    border-radius: 25px;
-}
 
 .fichaTecnica__formContainer {
     display: flex;
@@ -20,6 +12,10 @@
 
     label {
         margin-right: 16px;
+        width: 190px;
+    }
+
+    input {
         width: 190px;
     }
 }

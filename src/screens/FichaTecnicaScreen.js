@@ -8,7 +8,7 @@ export const FichaTecnicaScreen = () => {
 
     return (
         <div className="fichaTecnica">
-            <div className="fichaTecnica__formBox">
+            <div className="heroBackground">
                 <form onSubmit={handleSubmit(onSubmit)} >
                     <h3 className="fichaTecnica__formTitle">Ficha Tecnica: 1</h3>
                     <div className="fichaTecnica__formContainer">
