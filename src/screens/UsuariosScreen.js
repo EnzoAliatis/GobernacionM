@@ -1,9 +1,14 @@
 import React from 'react'
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 
 
 export const UsuariosScreen = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { control, register, handleSubmit } = useForm();
+    const { fields, append, remove } = useFieldArray({
+        control,
+        name: "usuarios",
+    });
+
     const onSubmit = data => console.log(data);
 
     return (
@@ -25,18 +30,33 @@ export const UsuariosScreen = () => {
                             <h4>Num.Serie</h4>
                         </div>
                         <div>
-                            <div className="connectividad__table_row">
-                                <input id="departamento" type="text" {...register("departamento", { required: true })} />
-                                <input id="descripcion" type="text" {...register("descripcion", { required: true })} />
-                                <input id="marca" type="text" {...register("marca", { required: true })} />
-                                <input id="modelo" type="text" {...register("modelo", { required: true })} />
-                                <input id="macAddress" type="text" {...register("macAddress", { required: true })} />
-                                <input id="ipAddress" type="text" {...register("ipAddress", { required: true })} />
-                                <input id="numSerie" type="text" {...register("numSerie", { required: true })} />
-                            </div>
+                            {fields.map((field, index) => (
+                                <div className="connectividad__table_row" key={field.id}>
+                                    <input {...register(`usuarios.${index}.departamento`)} />
+                                    <input {...register(`usuarios.${index}.descripcion`)} />
+                                    <input {...register(`usuarios.${index}.marca`)} />
+                                    <input {...register(`usuarios.${index}.modelo`)} />
+                                    <input {...register(`usuarios.${index}.macAddress`)} />
+                                    <input {...register(`usuarios.${index}.ipAddress`)} />
+                                    <input {...register(`usuarios.${index}.numSerie`)} />
+                                </div>
+                            ))}
 
                             <div className="connectividad__table_submit_container">
-                                <input className="primaryBtn" value="+" type="submit" />
+                                <button onClick={() => append({
+                                    departamento: '',
+                                    descripcion: '',
+                                    marca: '',
+                                    modelo: '',
+                                    macAddress: '',
+                                    ipAddress: '',
+                                    numSerie: '',
+                                })} className='primaryBtn'>
+                                    +
+                                </button>
+                                <button onClick={() => remove(fields.length - 1)} className='dangerBtn'>
+                                    -
+                                </button>
                             </div>
                         </div>
 
