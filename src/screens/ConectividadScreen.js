@@ -1,10 +1,14 @@
 import React from 'react'
-import { useForm } from "react-hook-form";
+import { useForm, useFieldArray } from "react-hook-form";
 
 
 export const ConectividadScreen = () => {
+    const { control, register, handleSubmit } = useForm();
+    const { fields, append, remove } = useFieldArray({
+        control,
+        name: "componentes",
+    });
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
 
     return (
@@ -27,19 +31,36 @@ export const ConectividadScreen = () => {
                             <h4>Num.Serie</h4>
                         </div>
                         <div>
-                            <div className="connectividad__table_row">
-                                <input id="departamento" type="text" {...register("departamento", { required: true })} />
-                                <input id="codigo" type="text" {...register("codigo", { required: true })} />
-                                <input id="descripcion" type="text" {...register("descripcion", { required: true })} />
-                                <input id="marca" type="text" {...register("marca", { required: true })} />
-                                <input id="modelo" type="text" {...register("modelo", { required: true })} />
-                                <input id="macAddress" type="text" {...register("macAddress", { required: true })} />
-                                <input id="ipAddress" type="text" {...register("ipAddress", { required: true })} />
-                                <input id="numSerie" type="text" {...register("numSerie", { required: true })} />
-                            </div>
+                            {fields.map((field, index) => (
+                                <div className="connectividad__table_row" key={field.id}>
+                                    <input {...register(`componentes.${index}.departamento`)} />
+                                    <input {...register(`componentes.${index}.codigo`)} />
+                                    <input {...register(`componentes.${index}.descripcion`)} />
+                                    <input {...register(`componentes.${index}.marca`)} />
+                                    <input {...register(`componentes.${index}.modelo`)} />
+                                    <input {...register(`componentes.${index}.macAddress`)} />
+                                    <input {...register(`componentes.${index}.ipAddress`)} />
+                                    <input {...register(`componentes.${index}.numSerie`)} />
+                                </div>
+                            ))}
+
 
                             <div className="connectividad__table_submit_container">
-                                <input className="primaryBtn" value="+" type="submit" />
+                                <button onClick={() => append({
+                                    departamento: '',
+                                    codigo: '',
+                                    descripcion: '',
+                                    marca: '',
+                                    modelo: '',
+                                    macAddress: '',
+                                    ipAddress: '',
+                                    numSerie: '',
+                                })} className='primaryBtn'>
+                                    +
+                                </button>
+                                <button onClick={() => remove(fields.length-1)} className='dangerBtn'>
+                                    -
+                                </button>
                             </div>
                         </div>
                         <div className="connectividad__observaciones_container">

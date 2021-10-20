@@ -26,6 +26,13 @@ input {
     font-weight: 600;
 }
 
+.dangerBtn {
+  background-color: red;
+  color: white;
+  padding: 4px 16px;
+  font-weight: 600;
+}
+
 .heroBackground {
     background-color: darken($color: #f6f5f7, $amount: 8%);
     border-radius: 25px;
