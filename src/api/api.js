@@ -9,7 +9,7 @@ export const apiSlice = createApi({
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {
-        headers.set('Cookie', `Authorization=${token}`);
+        headers.set('token', token);
       }
       return headers;
     },

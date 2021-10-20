@@ -4,7 +4,7 @@ export const profileServices = {
     getInfoUser: async (token) => {
         try {
             const response = await fetch(`${BASE_URL}/getInfoUser`, {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                     token,
